@@ -1,0 +1,1684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SudokuGraphia</class>
+ <widget class="QMainWindow" name="SudokuGraphia">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>955</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>955</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>955</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="battery"/>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	font: 14pt &quot;Sans Serif&quot;;
+}
+QLineEdit {
+	padding: 0px;
+	border: none;
+	font: 19pt &quot;Sans Serif&quot;;
+	background-color: rgb(237, 250, 255);
+}
+QLineEdit[echoMode=&quot;2&quot;] {
+    lineedit-password-character: 9679;
+}
+QMainWindow {
+	background-color: rgb(43, 67, 83);
+}
+QPushButton {
+	padding: 7px;
+	border-radius:9px;
+	font: 14pt &quot;Sans Serif&quot;;
+	font-weight:600;
+}
+QGroupBox {
+	border: 1px solid #76797C;
+    border-radius: 2px;
+    margin-top: 20px;
+	padding: 5px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+QFrame &gt; QPushButton {
+	color: rgb(192, 236, 234);
+}
+QGroupBox &gt; QPushButton {
+	background-color: rgb(43, 67, 83);
+	color: rgb(192, 236, 234);
+}
+QGroupBox{
+	border-color: rgb(232, 99, 10);
+}
+QGroupBox:title {
+	color: rgb(232, 99, 10);
+}
+#frame_carre_1, #frame_carre_3, #frame_carre_5, #frame_carre_7, #frame_carre_9 {
+	background-color: #e7f5fe;
+}
+#frame_carre_2 , #frame_carre_4, #frame_carre_6, #frame_carre_8{
+background-color: rgb(93, 140, 176);
+color: rgb(255, 255, 255);
+}
+#frame_carre_2 &gt; QLineEdit , #frame_carre_4  &gt; QLineEdit, #frame_carre_6  &gt; QLineEdit, #frame_carre_8  &gt; QLineEdit{
+	background-color: rgba(0, 0, 255, 0.06);
+}
+#trad_part {
+	border: 1px solid #76797C;
+	border-color: rgb(232, 99, 10);
+    border-radius: 2px;
+}
+#lineEdit {
+	background: transparent;
+	color:  rgb(232, 99, 10);
+}</string>
+  </property>
+  <property name="setContentsMargins" stdset="0">
+   <number>0</number>
+  </property>
+  <property name="horizontalSpacing" stdset="0">
+   <number>0</number>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>0</y>
+      <width>481</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>600</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 15px;
+	background-color: rgb(192, 236, 234);
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <property name="leftMargin">
+      <number>22</number>
+     </property>
+     <property name="rightMargin">
+      <number>13</number>
+     </property>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QGroupBox" name="groupBox_algo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="title">
+        <string>Algorithme de résolution</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="powel">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Powel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bck">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Backtracking</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="gl">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Glouton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="encourt">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Manuel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="maximumSize">
+        <size>
+         <width>413</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="title">
+        <string>Description</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QTextEdit" name="desc">
+          <property name="minimumSize">
+           <size>
+            <width>312</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QScrollBar:vertical {
+    background: lightgray;
+    width: 10px;
+}
+
+QScrollBar::handle:vertical {
+    background:  rgb(232, 99, 10);
+    min-height: 20px;
+}
+
+QScrollBar::add-line:vertical {
+    background: lightgray;
+    height: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    background: lightgray;
+    height: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; font-size:9pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;Initialisation :&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; Commencez par trier les sommets du graphe de manière à ce que les sommets de degré élevé soient traités en premier. Le degré d'un sommet est le nombre d'arêtes incidentes à ce sommet.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Attribution de couleurs :&lt;/span&gt; Parcourez chaque sommet du graphe dans l'ordre trié. Pour chaque sommet, attribuez-lui la plus petite couleur possible qui n'est pas déjà utilisée par ses voisins. Si tous les voisins ont déjà une couleur attribuée, ajoutez une nouvelle couleur.&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Terminaison :&lt;/span&gt; Répétez l'étape 2 pour tous les sommets du graphe jusqu'à ce que tous les sommets soient coloriés.&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;L'algorithme de coloriage de graphes glouton donne une solution acceptable, mais pas toujours optimale. Il peut utiliser plus de couleurs que nécessaire, mais il est rapide et simple. L'efficacité de l'algorithme dépend souvent de l'ordre dans lequel les sommets sont traités.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;En pratique, cet algorithme est utilisé pour résoudre des problèmes de coloration de graphes dans des domaines tels que l'assignation de fréquences aux canaux de communication sans fil, l'assignation de registres dans la compilation de programmes, etc.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+      <widget class="QFrame" name="frame_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>420</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	width: 100px;	
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="1">
+         <widget class="QPushButton" name="reset">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(43, 67, 83);</string>
+          </property>
+          <property name="text">
+           <string>Réinitialiser</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="generate">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(43, 67, 83);
+</string>
+          </property>
+          <property name="text">
+           <string>Générer</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="resolveButton">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(43, 67, 83);</string>
+          </property>
+          <property name="text">
+           <string>Résoudre</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>30</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>60</y>
+      <width>430</width>
+      <height>418</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="title">
+     <string>Sudoku</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QFrame" name="frame_sudo">
+       <property name="maximumSize">
+        <size>
+         <width>400</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>14</pointsize>
+         <italic>false</italic>
+         <bold>false</bold>
+         <hintingpreference>PreferDefaultHinting</hintingpreference>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::NoContextMenu</enum>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="2" column="1">
+         <widget class="QFrame" name="frame_carre_8">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_28">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l59">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l77">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l58">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l69">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l78">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l67">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l60">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l68">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l76">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QFrame" name="frame_carre_6">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_26">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l35">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l53">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l34">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l45">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l54">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l43">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l36">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l44">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l52">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QFrame" name="frame_carre_5">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_25">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l32">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l50">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l31">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l42">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l51">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l40">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l33">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l41">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l49">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QFrame" name="frame_carre_9">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_29">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l62">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l80">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l61">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l72">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l81">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l70">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l63">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l71">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l79">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QFrame" name="frame_carre_1">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_18">
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l3">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l19">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l1">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l2">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l11">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l12">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l10">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l20">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l21">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QFrame" name="frame_carre_4">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_24">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l29">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l47">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l28">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l39">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l48">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l37">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l30">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l38">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l46">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QFrame" name="frame_carre_2">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_22">
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l4">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l14">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l13">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l15">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l6">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l5">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l22">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l23">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l24">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QFrame" name="frame_carre_7">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_27">
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l73">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l66">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l75">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l65">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l74">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l55">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l64">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l56">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l57">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QFrame" name="frame_carre_3">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_23">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="l8">
+             <property name="text">
+              <string>2</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="l26">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>8</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="l7">
+             <property name="text">
+              <string>1</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="l18">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="l27">
+             <property name="text">
+              <string>9</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="l16">
+             <property name="text">
+              <string>4</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="l9">
+             <property name="text">
+              <string>3</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="l17">
+             <property name="text">
+              <string>5</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="l25">
+             <property name="text">
+              <string>7</string>
+             </property>
+             <property name="maxLength">
+              <number>1</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

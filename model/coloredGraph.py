@@ -1,4 +1,4 @@
-from valuedGraph import ValuedGraph
+from .valuedGraph import ValuedGraph
 
 def get_lowest_free_color(g: ValuedGraph, color: set, i: int, colors: list):
     colors_ = colors.copy()

@@ -2,6 +2,9 @@ import numpy as np
 import copy
 
 class ValuedGraph:
+    
+    # CONSTRUCTEURS
+    
     def __init__(self, n: int):
         assert n > 0, "__init__ : them matrice must have positive a size."
 
