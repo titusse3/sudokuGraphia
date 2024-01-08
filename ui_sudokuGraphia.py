@@ -17,8 +17,11 @@ class Ui_SudokuGraphia(object):
         SudokuGraphia.resize(955, 600)
         SudokuGraphia.setMinimumSize(QtCore.QSize(955, 600))
         SudokuGraphia.setMaximumSize(QtCore.QSize(955, 600))
+        icon = QtGui.QIcon.fromTheme("battery")
+        SudokuGraphia.setWindowIcon(icon)
         SudokuGraphia.setStyleSheet("* {\n"
 "    font: 14pt \"Sans Serif\";\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "QLineEdit {\n"
 "    padding: 0px;\n"
@@ -832,3 +835,13 @@ class Ui_SudokuGraphia(object):
         self.l9.setText(_translate("SudokuGraphia", "3"))
         self.l17.setText(_translate("SudokuGraphia", "5"))
         self.l25.setText(_translate("SudokuGraphia", "7"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    SudokuGraphia = QtWidgets.QMainWindow()
+    ui = Ui_SudokuGraphia()
+    ui.setupUi(SudokuGraphia)
+    SudokuGraphia.show()
+    sys.exit(app.exec())
