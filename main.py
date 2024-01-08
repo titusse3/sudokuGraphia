@@ -22,8 +22,8 @@ class CustomPopup(QDialog):
         # Créer une mise en page et ajouter les composants
         layout = QVBoxLayout(self)
         self.setWindowTitle(titleFrame)
-        self.setMaximumSize(QtCore.QSize(0, 0))
-        self.setMinimumSize(QtCore.QSize(100, 200))
+        # self.setMaximumSize(QtCore.QSize(0, 0))
+        self.setMinimumSize(QtCore.QSize(500, 100))
         self.setWindowIcon(QIcon("./icon.ico"))
         layout.addWidget(label)
         layout.addWidget(ok_button)
