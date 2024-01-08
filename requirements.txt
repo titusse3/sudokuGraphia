@@ -1,0 +1,5 @@
+# requirements.txt
+
+PyQt6==6.1.0
+matplotlib==3.4.3
+networkx==2.6.3
