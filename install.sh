@@ -9,3 +9,5 @@ pip install matplotlib
 
 # Installation de networkx
 pip install networkx
+
+sudo apt install libxcb-cursor0
