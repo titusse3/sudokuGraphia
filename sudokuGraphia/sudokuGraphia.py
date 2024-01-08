@@ -2,7 +2,7 @@ import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QLineEdit, QFrame, QPushButton, QLabel, QDialog, QVBoxLayout
 from PyQt6.QtGui import QIntValidator, QIcon
-from ui_sudokuGraphia import Ui_SudokuGraphia
+from vue.ui_sudokuGraphia import Ui_SudokuGraphia
 from model.sudokuModel import SudokuModel, Algo
 
 
