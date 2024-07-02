@@ -1,3 +1,1 @@
-# Sudoku Resolver
-
-With graph
+# SudokuGraphia
