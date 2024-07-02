@@ -9,10 +9,7 @@
 
 ### Sudoku Application Interface
 
-<div style="display: flex; justify-content: space-around;">
-    <img src="images/cap1.png" alt="Graph REPL" width="45%">
-    <img src="images/cap2.png" alt="Sudoku Application" width="45%">
-</div>
+![Sudoku Application](gif/presentation.gif)
 
 ## Project Description
 
